@@ -1,121 +1,424 @@
+
 import 'package:flutter/material.dart';
+import 'regioes_screen.dart';
+import 'alertas_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AlertaBairroApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AlertaBairroApp extends StatelessWidget {
+  const AlertaBairroApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'AlertaBairro',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+        scaffoldBackgroundColor: const Color(0xFFF3F6FA),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF123B63),
+        ),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            fontSize: 16,
+            color: Color(0xFF111827),
+          ),
+          bodySmall: TextStyle(
+            fontSize: 14,
+            color: Color(0xFF1F2937),
+          ),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class _HomeScreenState extends State<HomeScreen> {
+  bool alertaLido = false;
+  int paginaSelecionada = 0;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        backgroundColor: const Color(0xFF123B63),
+        foregroundColor: Colors.white,
+        title: const Text(
+          'AlertaBairro',
+          style: TextStyle(
+            fontSize: 21,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: Icon(Icons.notifications_active_outlined),
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const Text(
+              'Olá, morador! 👋',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF123B63),
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            const Text(
+              'Acompanhe a situação da sua região.',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color(0xFF111827),
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            const Text(
+              'Situação da sua região',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF111827),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFE0B2),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.warning_amber_rounded,
+                        color: Color(0xFFE65100),
+                        size: 32,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'ATENÇÃO',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFE65100),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 12),
+
+                  Text(
+                    'Jardim Esperança',
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF111827),
+                    ),
+                  ),
+
+                  SizedBox(height: 8),
+
+                  Text(
+                    'O nível da água está aumentando. '
+                    'Fique atento aos próximos avisos.',
+                    style: TextStyle(
+                      fontSize: 18,
+                      height: 1.5,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF111827),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            const Text(
+              'Monitoramento',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF111827),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: const Row(
+                children: [
+                  Icon(
+                    Icons.water,
+                    size: 42,
+                    color: Colors.blue,
+                  ),
+
+                  SizedBox(width: 16),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Nível da água',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF111827),
+                        ),
+                      ),
+
+                      SizedBox(height: 3),
+
+                      Text(
+                        '1,2 metros',
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF111827),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            const Text(
+              'Regiões monitoradas',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF111827),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            regiao(
+              'Jardim Esperança',
+              'Atenção',
+              Colors.orange.shade800,
+            ),
+
+            regiao(
+              'Vila Nova',
+              'Alerta',
+              Colors.red.shade800,
+            ),
+
+            regiao(
+              'Parque das Flores',
+              'Normal',
+              Colors.green.shade800,
+            ),
+
+            regiao(
+              'Centro',
+              'Emergência',
+              Colors.red.shade900,
+            ),
+
+            const SizedBox(height: 24),
+
+            const Text(
+              'Último aviso recebido',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF111827),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Card(
+              color: Colors.white,
+              child: ListTile(
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                leading: const Icon(
+                  Icons.notifications_active,
+                  color: Colors.deepOrange,
+                  size: 30,
+                ),
+
+                title: const Text(
+                  'Atenção para chuvas fortes',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF111827),
+                  ),
+                ),
+
+                subtitle: const Text(
+                  'Jardim Esperança - Dados simulados',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF111827),
+                  ),
+                ),
+
+                trailing: IconButton(
+                  icon: Icon(
+                    alertaLido
+                        ? Icons.check_circle
+                        : Icons.mark_email_unread,
+                    color: alertaLido
+                        ? Colors.green
+                        : Colors.orange,
+                  ),
+
+                  onPressed: () {
+                    setState(() {
+                      alertaLido = !alertaLido;
+                    });
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          alertaLido
+                              ? 'Alerta marcado como lido!'
+                              : 'Alerta marcado como não lido!',
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            const Center(
+              child: Text(
+                'ALERTABAIRRO • PREVENÇÃO SALVA VIDAS',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF374151),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: paginaSelecionada,
+
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const RegioesScreen(),
+              ),
+            );
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AlertasScreen(),
+              ),
+            );
+          }
+        },
+
+        selectedItemColor: const Color(0xFF123B63),
+        unselectedItemColor: const Color(0xFF374151),
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Início',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on),
+            label: 'Regiões',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Alertas',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget regiao(String nome, String risco, Color cor) {
+    return Card(
+      color: Colors.white,
+      margin: const EdgeInsets.only(bottom: 10),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(16),
+
+        leading: const Icon(
+          Icons.location_on,
+          color: Color(0xFF123B63),
+          size: 36,
+        ),
+
+        title: Text(
+          nome,
+          style: const TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF111827),
+          ),
+        ),
+
+        trailing: Text(
+          risco,
+          style: TextStyle(
+            fontSize: 15,
+            color: cor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
