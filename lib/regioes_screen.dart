@@ -32,7 +32,7 @@ class RegioesScreen extends StatelessWidget {
 
           regiao(
             context,
-            'Jardim Esperança',
+            'Jardim São Paulo',
             'Atenção',
             Colors.orange.shade800,
             '1,2 metros',
@@ -41,7 +41,7 @@ class RegioesScreen extends StatelessWidget {
 
           regiao(
             context,
-            'Vila Nova',
+            'Av.Paulista',
             'Alerta',
             Colors.red,
             '1,8 metros',

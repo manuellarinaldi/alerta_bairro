@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'regioes_screen.dart';
 import 'alertas_screen.dart';
+import 'cadastro_screen.dart';
 
 void main() {
   runApp(const AlertaBairroApp());
@@ -32,7 +33,11 @@ class AlertaBairroApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: const CadastroScreen(),
+
+      routes: {
+        '/inicio': (context) => const HomeScreen(),
+      },
     );
   }
 }
@@ -138,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 12),
 
                   Text(
-                    'Jardim Esperança',
+                    'Jardim São Paulo',
                     style: TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.bold,
@@ -233,13 +238,13 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
 
             regiao(
-              'Jardim Esperança',
+              'Jardim São Paulo',
               'Atenção',
               Colors.orange.shade800,
             ),
 
             regiao(
-              'Vila Nova',
+              'Av.Paulista',
               'Alerta',
               Colors.red.shade800,
             ),
@@ -292,7 +297,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 subtitle: const Text(
-                  'Jardim Esperança - Dados simulados',
+                  'Jardim São Paulo - Dados simulados',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
