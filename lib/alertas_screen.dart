@@ -47,7 +47,7 @@ class AlertasScreen extends StatelessWidget {
                 ),
               ),
               subtitle: const Text(
-                'Jardim Esperança\nDados simulados',
+                'Jardim São Paulo\nDados simulados',
                 style: TextStyle(
                   fontSize: 16,
                   height: 1.5,
@@ -77,7 +77,7 @@ class AlertasScreen extends StatelessWidget {
                 ),
               ),
               subtitle: const Text(
-                'Vila Nova\nDados simulados',
+                'Av.Paulista\nDados simulados',
                 style: TextStyle(
                   fontSize: 16,
                   height: 1.5,

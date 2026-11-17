@@ -57,22 +57,40 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
         backgroundColor: const Color(0xFF123B63),
         foregroundColor: Colors.white,
-        title: const Text(
-          'AlertaBairro',
-          style: TextStyle(
-            fontSize: 21,
-            fontWeight: FontWeight.bold,
-          ),
+        title: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'AlertaBairro',
+              style: TextStyle(
+               fontSize: 27,
+               fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              'Informação que protege',
+               style: TextStyle(
+                fontSize: 14,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
         actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(Icons.notifications_active_outlined),
+         Padding(
+          padding: EdgeInsets.only(right: 20),
+          child: Icon(
+           Icons.notifications_active_outlined,
+           size: 30,
           ),
-        ],
-      ),
+        ),
+      ],
+    ),
+
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -100,8 +118,66 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 24),
 
+            const SizedBox(height: 20),
+
+            ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Stack(
+                children: [
+                  Image.asset(
+                   'assets/images/enchente.png',
+                    width: double.infinity,
+                    height: 230,
+                    fit: BoxFit.cover,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 230,
+                    padding: const EdgeInsets.all(20),
+                    alignment: Alignment.bottomRight,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withValues(alpha: 0.75),
+                      ],
+                    ),
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                     Text(
+                       'Previna-se!',
+                        style: TextStyle(
+                         fontSize: 29,
+                         fontWeight: FontWeight.bold,
+                         color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Acompanhe os alertas do seu bairro.',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+            const SizedBox(height: 24),
+
             const Text(
-              'Situação da sua região',
+              'Alerta para sua região',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -179,6 +255,82 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             const SizedBox(height: 12),
+
+            const SizedBox(height: 20),
+
+            const Text(
+             'Acesso rápido',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF111827),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                       context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegioesScreen(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.location_on, size: 22),
+                    label: const Text(
+                     'Regiões',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF123B63),
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                             builder: (context) => const AlertasScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.notifications, size: 22),
+                      label: const Text(
+                        'Alertas',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF123B63),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 20),
 
             Container(
               padding: const EdgeInsets.all(18),
@@ -373,8 +525,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
         selectedItemColor: const Color(0xFF123B63),
         unselectedItemColor: const Color(0xFF374151),
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w600,
+        ),
+        selectedFontSize: 16,
+        unselectedFontSize: 16,
 
         items: const [
           BottomNavigationBarItem(
