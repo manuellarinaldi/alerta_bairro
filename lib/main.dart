@@ -110,9 +110,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const Text(
               'Acompanhe a situação da sua região.',
-              style: TextStyle(
-                fontSize: 16,
+              style: const TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,               
                 color: Color(0xFF111827),
+                height: 1.4,
               ),
             ),
 
@@ -451,7 +453,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 subtitle: const Text(
                   'Jardim São Paulo - Dados simulados',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 16,
+                    height: 1.5,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF111827),
                   ),

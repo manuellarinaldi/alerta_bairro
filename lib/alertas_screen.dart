@@ -19,10 +19,11 @@ class AlertasScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           const Text(
-            'Confira os avisos sobre sua região.',
+            'Confira os avisos e fique atento aos riscos da sua região.',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
+              height: 1.4,
               color: Color(0xFF111827),
             ),
           ),
@@ -39,20 +40,38 @@ class AlertasScreen extends StatelessWidget {
                 size: 36,
               ),
               title: const Text(
-                'Atenção para chuvas fortes',
+                'Atenção chuvas fortes',
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF111827),
                 ),
               ),
+              trailing: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.orange.shade800,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text(
+                  'ATENÇÃO',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               subtitle: const Text(
                 'Jardim São Paulo\nDados simulados',
                 style: TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF1F2937),
+                  fontSize: 17,
+                  height: 1.6,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF111827),
                 ),
               ),
               isThreeLine: true,
@@ -76,13 +95,31 @@ class AlertasScreen extends StatelessWidget {
                   color: Color(0xFF111827),
                 ),
               ),
+              trailing: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.red.shade800,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text(
+                  'ALERTA',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               subtitle: const Text(
                 'Av.Paulista\nDados simulados',
                 style: TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF1F2937),
+                  fontSize: 17,
+                  height: 1.6,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF111827),
                 ),
               ),
               isThreeLine: true,
@@ -95,7 +132,7 @@ class AlertasScreen extends StatelessWidget {
               contentPadding: const EdgeInsets.all(16),
               leading: const Icon(
                 Icons.info,
-                color: Colors.blue,
+                color: Color.fromARGB(255, 46, 125, 50),
                 size: 36,
               ),
               title: const Text(
@@ -106,13 +143,28 @@ class AlertasScreen extends StatelessWidget {
                   color: Color(0xFF111827),
                 ),
               ),
+              trailing: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.green.shade800,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text(
+                  'NORMAL',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               subtitle: const Text(
                 'Parque das Flores\nDados simulados',
                 style: TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF1F2937),
+                  fontSize: 17,
+                  height: 1.6,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF111827),
                 ),
               ),
               isThreeLine: true,

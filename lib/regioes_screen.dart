@@ -22,8 +22,9 @@ class RegioesScreen extends StatelessWidget {
           const Text(
             'Acompanhe os níveis de risco das regiões.',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.w600,
+              height: 1.5,
               color: Color(0xFF111827),
             ),
           ),
@@ -82,7 +83,10 @@ class RegioesScreen extends StatelessWidget {
       color: Colors.white,
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
-        contentPadding: const EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal:20,
+          vertical: 20,
+        ),
         leading: const Icon(
           Icons.location_on,
           color: Color(0xFF123B63),
@@ -96,21 +100,35 @@ class RegioesScreen extends StatelessWidget {
             color: Color(0xFF111827),
           ),
         ),
-        subtitle: const Text(
-          'Dados simulados',
+        subtitle: Text(
+          'Nível da água: $nivelAgua',
           style: TextStyle(
             fontSize: 16,
             height: 1.5,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             color: Color(0xFF1F2937),
           ),
         ),
-        trailing: Text(
-          risco,
-          style: TextStyle(
-            fontSize: 15,
+        trailing: Container(
+          constraints: const BoxConstraints(
+            minWidth: 95,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 10,
+          ),
+          decoration: BoxDecoration(
             color: cor,
-            fontWeight: FontWeight.bold,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+           risco.toUpperCase(),
+           textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 13,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         onTap: () {
